@@ -1,5 +1,7 @@
 package basicui01;
 
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 
 /*
@@ -82,10 +84,13 @@ public class FLatih01 extends javax.swing.JFrame {
 
         jLabel4.setText("Nama Sekolah");
 
+        buttonGroup1.add(rb_komputer);
         rb_komputer.setText("Komputer");
 
+        buttonGroup1.add(rb_administrasi);
         rb_administrasi.setText("Administrasi");
 
+        buttonGroup1.add(rb_akuntansi);
         rb_akuntansi.setText("Akuntansi");
 
         jLabel5.setText("Peminatan");
@@ -105,25 +110,21 @@ public class FLatih01 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(55, 55, 55))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cb_sekolah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tf_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(tf_nama_sekolah, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -153,7 +154,7 @@ public class FLatih01 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -198,11 +199,40 @@ public class FLatih01 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("empty-statement")
     private void btActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Hai Dunia " 
-                + tf_nama.getText().toString() 
-                + ta_alamat.getText().toString());
+        String minat = "";
+        String kemampuan = "";
+        
+        //----- PROSES RADIO GROUP
+        for(Enumeration<AbstractButton> buttons = buttonGroup1.getElements();
+                   buttons.hasMoreElements();){
+            AbstractButton button = buttons.nextElement();
+            
+            if (button.isSelected())
+                minat = button.getText();
+        }
+                         
+        //--- PROSES CHECKBOX
+        if (chb_komputer.isSelected())
+            kemampuan += "\n" + chb_komputer.getText();
+        
+        if (chb_bhs_asing.isSelected())
+            kemampuan += "\n" + chb_bhs_asing.getText();        
+        
+        if (chb_seni.isSelected())
+            kemampuan += "\n" + chb_seni.getText();
+       
+        if (chb_musik.isSelected())
+            kemampuan += "\n" + chb_musik.getText();
+       
+        JOptionPane.showMessageDialog(null,  
+                 "NAMA :" + tf_nama.getText().toString() 
+                + "\nALAMAT: " + ta_alamat.getText().toString() 
+                + "\nSEKOLAH: " + cb_sekolah.getSelectedItem().toString()
+                + " " + tf_nama_sekolah.getText().toString()
+                + "\nMINAT: " + minat
+                + "\nKEMAMPUAN : " + kemampuan);
     }//GEN-LAST:event_btActionPerformed
 
     private void tf_nama_sekolahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nama_sekolahActionPerformed
