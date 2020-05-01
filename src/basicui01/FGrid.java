@@ -14,9 +14,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FGrid extends javax.swing.JFrame {
 
-    //kolom
+    //model untuk table
     DefaultTableModel model = new DefaultTableModel(); 
-    int _posisi = 0;
+    int _posisi = 0; //untuk deteksi posisi baris tabel
     
     /**
      * Creates new form FGrid
@@ -29,7 +29,7 @@ public class FGrid extends javax.swing.JFrame {
         model.setColumnIdentifiers(columns);
         
         //set
-        jTable1.setModel(model);
+        table.setModel(model);
     }
 
     /**
@@ -49,7 +49,7 @@ public class FGrid extends javax.swing.JFrame {
         javax.swing.JButton bt_update = new javax.swing.JButton();
         javax.swing.JButton bt_delete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +78,7 @@ public class FGrid extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -89,12 +89,12 @@ public class FGrid extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                tableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,11 +191,11 @@ public class FGrid extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_deleteActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        _posisi = jTable1.getSelectedRow();
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        _posisi = table.getSelectedRow();
         tf_nama.setText(model.getValueAt(_posisi, 0).toString());
         tf_kelas.setText(model.getValueAt(_posisi, 1).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_tableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -236,7 +236,7 @@ public class FGrid extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     private javax.swing.JTextField tf_kelas;
     private javax.swing.JTextField tf_nama;
     // End of variables declaration//GEN-END:variables
