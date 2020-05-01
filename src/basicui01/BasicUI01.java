@@ -26,7 +26,7 @@ public class BasicUI01 {
         }
         
         //menampilkan form
-        FLatih01 f = new FLatih01();
+        FGrid f = new FGrid();
         f.setVisible(true);
     }    
 }

@@ -128,7 +128,7 @@ public class FLatih01 extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(tf_nama_sekolah, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(18, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
@@ -226,6 +226,7 @@ public class FLatih01 extends javax.swing.JFrame {
         if (chb_musik.isSelected())
             kemampuan += "\n" + chb_musik.getText();
        
+        //tampilkan dialog
         JOptionPane.showMessageDialog(null,  
                  "NAMA :" + tf_nama.getText().toString() 
                 + "\nALAMAT: " + ta_alamat.getText().toString() 
